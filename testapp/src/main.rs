@@ -136,7 +136,7 @@ async fn main() -> Result<()> {
     consumer_a
       .for_each(move |delivery| {
         let msg = delivery.expect("failed to receive from node A");
-        info!("-> A, node A received: {}", String::from_utf8(msg.data).unwrap());
+        info!("-> A, received: {}", String::from_utf8(msg.data).unwrap());
         con_channel_a
           .basic_ack(msg.delivery_tag, BasicAckOptions::default())
           .map(|_| ())
@@ -195,7 +195,7 @@ async fn main() -> Result<()> {
   });
 
   info!("publishing from node B");
-  let mut cnt = 0;
+  let mut cnt = 10;
 
   loop {
     delay_for(Duration::from_millis(5000)).await;
