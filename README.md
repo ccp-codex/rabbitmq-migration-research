@@ -10,7 +10,7 @@ Our plan was to test each one but seems the first option solves the problem, so 
 
 ## Federation Setup
 
-Reading the documentation my only concern is whether it's possible to setup federation links in both directions, without causing messages to bounce back-and-forth forever.
+~~Reading the documentation my only concern is whether it's possible to setup federation links in both directions, without causing messages to bounce back-and-forth forever.~~ Apparently I missed this very important documentation: https://www.rabbitmq.com/federated-exchanges.html
 
 Running `federation.sh` will spin up two RabbitMQ containers, setup a vhost `fed-test` and create federation links in both directions for all exchanges in this vhost.
 
