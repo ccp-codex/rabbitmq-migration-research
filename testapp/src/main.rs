@@ -170,29 +170,29 @@ async fn main() -> Result<()> {
   // });
 
   // start publishing on both nodes
-  tokio::spawn(async move {
-    info!("publishing from node A");
+  //tokio::spawn(async move {
+  info!("publishing from node A");
 
-    let mut cnt = 0;
+  let mut cnt = 0;
 
-    loop {
-      delay_for(Duration::from_millis(5000)).await;
+  loop {
+    delay_for(Duration::from_millis(5000)).await;
 
-      let payload_a = format!("Msg {} from node A", cnt).into_bytes();
-      cnt += 1;
+    let payload_a = format!("Msg {} from node A", cnt).into_bytes();
+    cnt += 1;
 
-      pub_channel_a
-        .basic_publish(
-          exchange_name,
-          "route.a",
-          BasicPublishOptions::default(),
-          payload_a.to_vec(),
-          BasicProperties::default(),
-        )
-        .await
-        .unwrap();
-    }
-  });
+    pub_channel_a
+      .basic_publish(
+        exchange_name,
+        "route.a",
+        BasicPublishOptions::default(),
+        payload_a.to_vec(),
+        BasicProperties::default(),
+      )
+      .await
+      .unwrap();
+  }
+  //});
 
   // info!("publishing from node B");
   // let mut cnt = 10;
